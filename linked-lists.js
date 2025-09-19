@@ -19,7 +19,16 @@ class LinkedList {
   }
 
   append(value) {
+    const newNode = new Node(value, null)
     
+    if (!this.head) {
+      this.head = newNode
+      this.tail = newNode
+      return
+    }
+
+    this.tail.next = newNode
+    this.tail = newNode
   }
 
   insertMiddle() {
