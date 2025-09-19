@@ -1,7 +1,7 @@
 class Node {
-constructor(data, next) {
-  this.data = data
-  this.next = next
+  constructor(data, next) {
+    this.data = data
+    this.next = next
   }
 }
 
@@ -20,7 +20,7 @@ class LinkedList {
 
   append(value) {
     const newNode = new Node(value, null)
-    
+
     if (!this.head) {
       this.head = newNode
       this.tail = newNode
@@ -29,10 +29,6 @@ class LinkedList {
 
     this.tail.next = newNode
     this.tail = newNode
-  }
-
-  insertMiddle() {
-    
   }
 
   traverse() {
@@ -44,18 +40,36 @@ class LinkedList {
     }
   }
 
+  deleteHead() {
+    if (!this.head) {
+      return
+    }
 
-  delete() {
-    // delete specified node based
-    // set the previous nodes pointer to the node to the right of where the deleted node was, or if it was the final node then set the pointer to null
-    // only have the key, first search for the node and then delete it
+    if (this.head.next) {
+      this.head = this.head.next
+    } else {
+      this.head = null
+      this.tail = null
+    }
+  }
 
-
+  deleteTail() {
+    
   }
 
   search(value) {
     // search the entire linked list starting from the head for the target value
-    
+    const current = this.head
+
+    while (current !== value) {
+      if (current === value) {
+        return current
+      }
+
+      current = current.next
+    }
+
+    return null
   }
 
   // bonus: sort
