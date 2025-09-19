@@ -35,11 +35,22 @@ class LinkedList {
     
   }
 
+  traverse() {
+    const current = this.head
+
+    while (current) {
+      console.log(`${current.data}${current !== this.tail ? "-->" : ""}`)
+      current = current.next
+    }
+  }
+
 
   delete() {
     // delete specified node based
     // set the previous nodes pointer to the node to the right of where the deleted node was, or if it was the final node then set the pointer to null
     // only have the key, first search for the node and then delete it
+
+    
   }
 
   search() {
