@@ -35,7 +35,7 @@ class LinkedList {
     let current = this.head
 
     while (current) {
-      console.log(`${current.data}${current !== this.tail ? "-->" : ""}`)
+      process.stdout.write(`${current.data}${current !== this.tail ? "-->" : ""}`)
       current = current.next
     }
   }
@@ -54,23 +54,44 @@ class LinkedList {
   }
 
   deleteTail() {
-    
-  }
-
-  search(value) {
-    // search the entire linked list starting from the head for the target value
-    const current = this.head
-
-    while (current !== value) {
-      if (current === value) {
-        return current
-      }
-
-      current = current.next
+    if (!this.tail) {
+      return
     }
 
-    return null
+    if (!this.head.next) {
+      this.head = null
+      this.tail = null
+    }
+
+    let current = this.head
+    while (current.next.next) {
+      current = current.next
+    }
+    current.next = null
+    this.tail = current
   }
+
+  // search(value) {
+  //   let current = this.head
+
+  //   while (current !== value) {
+  //     if (current === value) {
+  //       return current
+  //     }
+
+  //     current = current.next
+  //   }
+
+  //   return null
+  // }
+
+  // bonus: to array
 
   // bonus: sort
 }
+
+let linkedList = new LinkedList()
+linkedList.append("hello")
+linkedList.append("world")
+linkedList.deleteTail()
+linkedList.traverse()
