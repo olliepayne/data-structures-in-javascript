@@ -35,7 +35,9 @@ class LinkedList {
     let current = this.head
 
     while (current) {
-      process.stdout.write(`${current.data}${current !== this.tail ? "-->" : ""}`)
+      process.stdout.write(
+        `${current.data}${current !== this.tail ? "-->" : ""}`
+      )
       current = current.next
     }
   }
@@ -71,19 +73,17 @@ class LinkedList {
     this.tail = current
   }
 
-  // search(value) {
-  //   let current = this.head
+  search(value) {
+    let current = this.head
+    while (current) {
+      if (current.data === value) {
+        return current
+      }
+      current = current.next
+    }
 
-  //   while (current !== value) {
-  //     if (current === value) {
-  //       return current
-  //     }
-
-  //     current = current.next
-  //   }
-
-  //   return null
-  // }
+    return
+  }
 
   // bonus: to array
 
@@ -93,5 +93,7 @@ class LinkedList {
 let linkedList = new LinkedList()
 linkedList.append("hello")
 linkedList.append("world")
-linkedList.deleteTail()
-linkedList.traverse()
+// linkedList.deleteTail()
+// linkedList.traverse()
+const hello = linkedList.search("world")
+console.log(hello)
