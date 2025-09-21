@@ -37,7 +37,18 @@ class DoublyLinkedList {
     }
   }
 
-  // deleteTail
+  deleteTail() {
+    if (!this.tail) {
+      return
+    }
+
+    if (this.tail.prev) {
+      this.tail = this.tail.prev
+    } else {
+      this.tail = null
+      this.head = null
+    }
+  }
 
   // traverse
 
@@ -53,3 +64,12 @@ function testDeleteHead() {
   console.log(`Post head deletion: ${JSON.stringify(doublyLinkedList)}`)
 }
 // testDeleteHead()
+
+function testDeleteTail() {
+  doublyLinkedList.prepend("Ollie")
+  doublyLinkedList.append("Payne")
+  console.log(`Pre head deletion: ${JSON.stringify(doublyLinkedList)}`)
+  doublyLinkedList.deleteTail()
+  console.log(`Post head deletion: ${JSON.stringify(doublyLinkedList)}`)
+}
+// testDeleteTail()
