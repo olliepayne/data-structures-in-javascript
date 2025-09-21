@@ -56,7 +56,15 @@ class DoublyLinkedList {
     this.tail = this.tail.prev ? this.tail.prev : null
   }
 
-  // traverse
+  traverse() {
+    let currentNode = this.head
+    while (currentNode) {
+      process.stdout.write(
+        `${currentNode.data}${currentNode !== this.tail ? "-->" : ""}`
+      )
+      currentNode = currentNode.next
+    }
+  }
 
   search(value) {
     let currentNode = this.head
@@ -108,3 +116,4 @@ testAppend()
 // testDeleteHead()
 // testDeleteTail()
 // console.log(doublyLinkedList.search("Ollie"))
+// doublyLinkedList.traverse()
