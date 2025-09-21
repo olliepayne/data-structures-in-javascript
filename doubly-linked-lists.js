@@ -13,9 +13,17 @@ class DoublyLinkedList {
   }
 
   prepend(value) {
-    const newNode = new Node(null, value, this.head)
-    this.head = newNode
-    this.tail = !this.tail && newNode
+    const newNode = new Node(null, value, null)
+
+    if (!this.head) {
+      this.head = newNode
+      this.tail = newNode
+    } else {
+      newNode.next = this.head
+      this.head.prev = newNode
+      this.tail = this.head
+      this.head = newNode
+    }
   }
 
   append(value) {
