@@ -1,8 +1,8 @@
 class Node {
-  constructor(data, next, prev) {
+  constructor(prev, data, next) {
+    this.prev = prev
     this.data = data
     this.next = next
-    this.prev = prev
   }
 }
 
@@ -13,13 +13,16 @@ class DoublyLinkedList {
   }
 
   prepend(value) {
-    // set the head to be a new node with the argument value
-    const newNode = new Node(value, this.head, null)
+    const newNode = new Node(null, value, this.head)
     this.head = newNode
     this.tail = !this.tail && newNode
   }
 
-  // append
+  append(value) {
+    const newNode = new Node(this.tail, value, null)
+    this.head = !this.head && newNode
+    this.tail = newNode
+  }
 
   // deleteHead
 
@@ -29,3 +32,8 @@ class DoublyLinkedList {
 
   // search
 }
+
+const doublyLinkedList = new DoublyLinkedList()
+// doublyLinkedList.prepend("Ollie")
+doublyLinkedList.append("Ollie")
+console.log(doublyLinkedList)
