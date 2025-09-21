@@ -89,11 +89,3 @@ class LinkedList {
 
   // bonus: sort
 }
-
-let linkedList = new LinkedList()
-linkedList.append("hello")
-linkedList.append("world")
-// linkedList.deleteTail()
-// linkedList.traverse()
-const hello = linkedList.search("world")
-console.log(hello)
