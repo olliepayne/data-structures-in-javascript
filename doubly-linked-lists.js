@@ -16,14 +16,13 @@ class DoublyLinkedList {
     const newNode = new Node(null, value, null)
 
     if (!this.head) {
-      this.head = newNode
       this.tail = newNode
     } else {
-      newNode.next = this.head
-      this.head.prev = newNode
-      // this.tail = this.head
-      this.head = newNode
+      newNode.next = this.head.data
+      this.head.prev = newNode.data
     }
+
+    this.head = newNode
   }
 
   append(value) {
@@ -32,8 +31,8 @@ class DoublyLinkedList {
     if (!this.tail) {
       this.head = newNode
     } else {
-      newNode.prev = this.tail
-      this.tail.next = newNode
+      newNode.prev = this.tail.data
+      this.tail.next = newNode.data
     }
 
     this.tail = newNode
@@ -44,25 +43,12 @@ class DoublyLinkedList {
       return
     }
 
-    if (this.head.next) {
-      this.head = this.head.next
-    } else {
-      this.head = null
-      this.tail = null
-    }
+    this.tail = this.head === this.tail ? null : this.tail
+    this.head = this.head.next ? this.head.next : null
   }
 
   deleteTail() {
-    if (!this.tail) {
-      return
-    }
-
-    if (this.tail.prev) {
-      this.tail = this.tail.prev
-    } else {
-      this.tail = null
-      this.head = null
-    }
+    
   }
 
   // traverse
@@ -85,7 +71,8 @@ function testAppend() {
 }
 
 function testDeleteHead() {
-  doublyLinkedList.prepend("Ollie")
+  doublyLinkedList.append("Ollie")
+  doublyLinkedList.append("Payne")
   console.log(`Pre head deletion: ${JSON.stringify(doublyLinkedList)}`)
   doublyLinkedList.deleteHead()
   console.log(`Post head deletion: ${JSON.stringify(doublyLinkedList)}`)
@@ -99,7 +86,7 @@ function testDeleteTail() {
   console.log(`Post head deletion: ${JSON.stringify(doublyLinkedList)}`)
 }
 
-testPrepend()
+// testPrepend()
 // testAppend()
-// testDeleteHead()
+testDeleteHead()
 // testDeleteTail()
