@@ -1,7 +1,8 @@
 class Node {
-  constructor(data, next) {
+  constructor(data, next, prev) {
     this.data = data
     this.next = next
+    this.prev = prev
   }
 }
 
@@ -97,3 +98,24 @@ linkedList.append("world")
 // linkedList.traverse()
 const hello = linkedList.search("world")
 console.log(hello)
+
+class DoublyLinkedList {
+  constructor() {
+    this.head = null
+    this.tail = null
+  }
+
+  prepend(value) {
+    
+  }
+
+  // append
+
+  // deleteHead
+
+  // deleteTail
+
+  // traverse
+
+  // search
+}
