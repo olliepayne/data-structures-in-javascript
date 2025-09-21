@@ -21,20 +21,22 @@ class DoublyLinkedList {
     } else {
       newNode.next = this.head
       this.head.prev = newNode
-      this.tail = this.head
+      // this.tail = this.head
       this.head = newNode
     }
   }
 
   append(value) {
-    const newNode = new Node(this.tail, value, null)
+    const newNode = new Node(null, value, null)
 
-    if (this.tail) {
+    if (!this.tail) {
+      this.head = newNode
+    } else {
+      newNode.prev = this.tail
       this.tail.next = newNode
     }
 
     this.tail = newNode
-    this.head = this.head ? this.head : newNode
   }
 
   deleteHead() {
