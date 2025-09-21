@@ -58,7 +58,17 @@ class DoublyLinkedList {
 
   // traverse
 
-  // search
+  search(value) {
+    let currentNode = this.head
+    while (currentNode) {
+      if (currentNode.data === value) {
+        return currentNode
+      }
+      currentNode = currentNode.next
+    }
+
+    return
+  }
 }
 
 const doublyLinkedList = new DoublyLinkedList()
@@ -94,6 +104,7 @@ function testDeleteTail() {
 }
 
 // testPrepend()
-// testAppend()
+testAppend()
 // testDeleteHead()
-testDeleteTail()
+// testDeleteTail()
+// console.log(doublyLinkedList.search("Ollie"))
